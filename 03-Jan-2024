@@ -1,0 +1,24 @@
+class Solution {
+    public int smallestSubstring(String S) {
+        // Code here
+        int num;
+        int min=Integer.MAX_VALUE;
+        for(int i=1;i<S.length();i++){
+            num=S.charAt(i-1)+S.charAt(i);
+            if(num==97||num==98||num==99){
+                int num1=147-num;
+                int index=S.indexOf((char)num1,i+1);
+                if(index==-1)
+                    break;
+                else{
+                    min=Math.min(min,(2+index-i));
+                }
+                if(min==3)
+                    return 3;
+            }
+        }
+        if(min==Integer.MAX_VALUE)
+            return -1;
+        return min;
+    }
+};
